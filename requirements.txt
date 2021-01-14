@@ -37,3 +37,4 @@ uritemplate==3.0.1
 urllib3==1.26.2
 Werkzeug==1.0.1
 wincertstore==0.2
+google-cloud-dialogflow==2.0.0

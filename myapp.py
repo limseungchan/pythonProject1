@@ -89,7 +89,7 @@ def handle_message(event):
             ))
     else:
         # dialog 결과 전달 받기 [2]
-        response = detect_intent_texts("dialogflowfirebasefulfill-xcqp", "connect_line", [event.message.text], "en-US")
+        response = detect_intent_texts("test-dpu9", "connect_line", [event.message.text], "en-US")
         # 라인에 메세지 전달 [6]
         line_bot_api.reply_message(
             event.reply_token,
@@ -154,6 +154,6 @@ if __name__ == "__main__":
     # ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
     # ssl_context.load_cert_chain(certfile='cert.pem', keyfile='key.pem', password='aa')
     # myapp.run(debug=True, host="0.0.0.0", port=5000, ssl_context=ssl_context)
-    myapp.run(debug=True, host="0.0.0.0", port=5000)
+    myapp.run(host="0.0.0.0")
 
 
