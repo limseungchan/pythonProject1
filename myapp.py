@@ -1,5 +1,5 @@
 import json
-from flask import Flask, request, make_response, jsonify, abort
+from flask import Flask, request, make_response, jsonify, abort, render_template
 import sys
 from firebase_admin import credentials, firestore, initialize_app
 import ssl
@@ -38,7 +38,7 @@ db = firestore.client()
 
 @myapp.route("/")
 def print_hello():
-    return "내이름은 임승찬"
+    return render_template('test.html')
 
 
 # 라인 연결 콜백 부분(거의 건들 일 없음) [1]
