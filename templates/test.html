@@ -5,10 +5,9 @@
     <title>Koreatech Databse Test</title>
 </head>
 <body>
-    1번 문제 : 내 이름은?<br/>
-    <form>
-        정답 : <input type="text" name="answer" size="30"><br/>
-        <input type='submit'>
+    <form action="/post" method="post">
+        <p>1. 내이름은? <input type="text" id="input" nmae="input"></p>
+        <input type='submit' value="제출" onclick="alert('제출완료!')" />
     </form>
 </body>
 </html>
