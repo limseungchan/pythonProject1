@@ -43,7 +43,7 @@ def print_hello():
 #웹페이지에 정답을 firebase에 저장
 @myapp.route("/submit", methods=['POST'])
 def save_query_html():
-    data = db.collection(u'test')
+    data = db.collection(u'test').document(request.form['id'])
     data.add({u'정답' : request.form['input']})
     # if(request.method=='GET'):
     #     return render_template('test.html')
