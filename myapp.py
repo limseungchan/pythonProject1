@@ -41,11 +41,13 @@ def print_hello():
     return render_template('test.html')
 
 #웹페이지에 정답을 firebase에 저장
+@myapp.route("/post", methods=['POST'])
 def save_query_html():
     value = request.form['input']
     data = db.collection(u'test')
     data.add(value)
-    return value
+    msg = "정답은 %s입니다." %value
+    return msg
 
 # 라인 연결 콜백 부분(거의 건들 일 없음) [1]
 @myapp.route("/callback", methods=['POST'])
