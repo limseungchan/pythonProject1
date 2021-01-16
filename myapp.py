@@ -38,16 +38,18 @@ db = firestore.client()
 
 @myapp.route("/")
 def print_hello():
-    return render_template('test.html')
+    return "시험을 보세요."
 
 #웹페이지에 정답을 firebase에 저장
-@myapp.route("/post", methods=['POST'])
+@myapp.route("/user", methods=['GET','POST'])
 def save_query_html():
     value = request.form['input']
     data = db.collection(u'test')
-    data.add(value)
-    msg = "정답은 %s입니다." %value
-    return msg
+    data.add({u'정답' : value})
+    if(request.method=='GET'):
+        return render_template('test.html')
+    elif(request.method=='POST'):
+        return "정답은 임승찬입니다."
 
 # 라인 연결 콜백 부분(거의 건들 일 없음) [1]
 @myapp.route("/callback", methods=['POST'])
