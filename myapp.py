@@ -38,7 +38,7 @@ db = firestore.client()
 
 @myapp.route("/")
 def print_hello():
-    return "시험을 보세요."
+    return render_template('test.html')
 
 #웹페이지에 정답을 firebase에 저장
 @myapp.route("/user", methods=['GET','POST'])
