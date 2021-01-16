@@ -150,12 +150,11 @@ def save_query_by_parameters(parameters):
     return u"save {}".format(parameters.get('databaseEntry'))
 
 #웹페이지에 정답을 firebase에 저장
+@myapp.route("/post", methods=['POST'])
 def save_query_html():
     value = request.form['input']
-
-    data = db.collection(u'dialogflow')
-    data.add({u'정답': value})
-    return print(value)
+    msg = "%s 정답입니다." %value
+    return msg
 
 if __name__ == "__main__":
     # ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
