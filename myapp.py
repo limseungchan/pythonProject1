@@ -41,15 +41,15 @@ def print_hello():
     return "test페이지로 이동해서 시험을 보세요."
 
 #웹페이지에 정답을 firebase에 저장
-@myapp.route("/test", methods=['GET','POST'])
+@myapp.route("/submit", methods=['POST'])
 def save_query_html():
-    value = request.form['input']
     data = db.collection(u'test')
-    data.add({u'정답' : value})
-    if(request.method=='GET'):
-        return render_template('test.html')
-    elif(request.method=='POST'):
-        return "정답은 임승찬입니다."
+    data.add({u'정답' : request.form['input']})
+    # if(request.method=='GET'):
+    #     return render_template('test.html')
+    # elif(request.method=='POST'):
+    #     return "정답은 임승찬입니다."
+    return "시험제출 완료"
 
 # 라인 연결 콜백 부분(거의 건들 일 없음) [1]
 @myapp.route("/callback", methods=['POST'])
