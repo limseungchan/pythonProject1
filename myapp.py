@@ -100,6 +100,10 @@ def handle_message(event):
                     ]
                 )
             ))
+    elif event.message.text == "시험":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='https://koreatech.herokuapp.com/'))
     else:
         # dialog 결과 전달 받기 [2]
         response = detect_intent_texts("test-dpu9", "connect_line", [event.message.text], "en-US")
