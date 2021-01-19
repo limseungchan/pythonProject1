@@ -44,7 +44,10 @@ def print_hello():
 @myapp.route("/submit", methods=['POST'])
 def save_query_html():
     data = db.collection(u'test')
-    data.add({u'정답' : request.form['input']})
+    if request.form['input'] == '임승찬':
+        data.add({u'시험점수' : 100})
+    else:
+        data.add({u'시험점수': 0})
     # if(request.method=='GET'):
     #     return render_template('test.html')
     # elif(request.method=='POST'):
