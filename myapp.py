@@ -108,6 +108,14 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='학번을 입력해주세요. ex) 학번 2016136113'))
+    elif "학번" in event.message.text:
+        temp = event.message.text.split(' ')[1]
+        doc_ref = db.collection(u'test').document(temp)
+        doc = doc_ref.get()
+        if doc.exists:
+            print(u'점수: {}'.format(doc.to_dict()))
+        else:
+            print(u'형식에 맞추거나 학번을 다시 입력해주세요.')
     else:
         # dialog 결과 전달 받기 [2]
         response = detect_intent_texts("test-dpu9", "connect_line", [event.message.text], "en-US")
