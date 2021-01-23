@@ -113,9 +113,13 @@ def handle_message(event):
         doc_ref = db.collection(u'test').document(temp)
         doc = doc_ref.get()
         if doc.exists:
-            print(u'점수: {}'.format(doc.to_dict()))
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=u'점수: {}'.format(doc.to_dict())))
         else:
-            print(u'형식에 맞추거나 학번을 다시 입력해주세요.')
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=u'형식에 맞추거나 학번을 다시 입력해주세요.'))
     else:
         # dialog 결과 전달 받기 [2]
         response = detect_intent_texts("test-dpu9", "connect_line", [event.message.text], "en-US")
