@@ -104,6 +104,10 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='https://koreatech.herokuapp.com/'))
+    elif event.message.text == "시험점수":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='학번을 입력해주세요. ex) 학번 2016136113'))
     else:
         # dialog 결과 전달 받기 [2]
         response = detect_intent_texts("test-dpu9", "connect_line", [event.message.text], "en-US")
